@@ -1,0 +1,420 @@
+* {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+::selection {
+    color: #fff;
+    background-color: #333;
+}
+
+body {
+    background-image: url(Source\ Files/bitcoin-plain-background.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.fixed-section {
+    top: 0;
+    z-index: 1;
+    position: sticky;
+}
+
+
+header {
+    padding-top: 1rem;
+    text-align: center;
+    margin-bottom: -.5rem;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+header > h1 {
+    cursor: default;
+    font-size: 4rem;
+    font-weight: bold;
+    letter-spacing: 1rem;
+    font-family: 'Russo One', sans-serif;
+    text-shadow: 1px 1px 1px rgb(180, 180, 180);
+}
+
+.navbar {
+    padding: 0 1rem;
+    font-weight: 400;
+    box-shadow: 0px 2px 5px black;
+}
+
+.navbar li {
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all .5s;
+}
+
+.navbar li:hover {
+    letter-spacing: .2rem;
+}
+
+#search-box:focus,
+#search-box:hover {
+    color: #333;
+    background-color: #fff;
+    box-shadow: inset 0 0 2px rgba(40, 40, 40, 0.6);
+}
+
+.error-input::placeholder {
+    color: rgb(185, 55, 51);
+}
+
+main {
+    width: 70vw;
+    display: flex;
+    margin: 2rem auto;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.loading-gif {
+    display: none;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    animation: sk-chase 2.5s infinite linear both;
+}
+
+/* ------------------ CARDS ------------------ */
+
+.card {
+    margin: .5rem;
+    box-shadow: 0px 0px 20px #ccc;
+    background-color: rgba(255, 255, 255, 0.97);
+    min-width: min-content;
+    max-width: 25%;
+    width: 18rem;
+    height: fit-content;
+    transition: all .2s ease;
+}
+
+.card:hover {
+    transform: translateY(.4rem);
+}
+
+.card-text {
+    text-transform: capitalize;
+    font-weight: 300;
+}
+
+.card-body > a:first-of-type {
+    display: inline-block;
+    background-color: rgb(199, 135, 133);
+    color: #fff;
+    border: none;
+    margin: 0;
+    padding: 4px 10px;
+    transition: all .2s;
+}
+
+.card-body > a:first-of-type:hover {
+    background-color: rgb(180, 116, 114);
+}
+
+.more-info-section {
+    display: block;
+    margin-top: 1rem;
+    animation: showInfo .5s ease-out;
+    transition: all .3s;
+}
+
+@keyframes showInfo {
+    from {
+        opacity: 0;
+        transform: translate(-1rem)
+        scale(1.2)
+        rotateY(50deg);
+    }
+    to {
+        opacity: 1;
+    }  
+}
+
+#hide-info-btn {
+    display: inline-block;
+}
+
+.hide-info-animation {
+    transition: all .3s ease-in;
+    opacity: 0;
+    transform: translate(-1rem)
+    scale(1.2)
+    rotateY(70deg);
+}
+
+.coin-image {
+    display: inline;
+    margin-left: .5rem;
+}
+
+.show-all-coins-btn {
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: uppercase;
+    display: none;
+    margin: 1.5rem auto -1rem auto;
+    box-shadow: 0 0 5px black;
+}
+
+
+/* ------------------ TOGGLE ------------------ */
+.switch {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    height: 24px;
+    width: 46px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2.3px solid rgb(143, 143, 143);
+    transition: all .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 1.7px;
+    background-color: rgb(143, 143, 143);
+    box-shadow: 0 0 2px #333;
+    transition: all .4s;
+}
+
+input:checked + .slider {
+    border: 2.5px solid transparent;
+    background-color: rgb(97, 104, 110);
+    box-shadow: 1px 1px 2px rgba(40, 40, 40, 0.4);
+}
+
+input:checked + .slider:before {
+    background-color: #fff;
+    transform: translateX(20px);
+}
+
+.slider.round {
+    border-radius: 40px;
+    box-shadow: inset 0 0 3px rgba(128, 128, 128, 0.4);
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+/* ------------------ MODAL ------------------ */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding: 2rem;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+    overflow-y: auto;
+}
+  
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  border: 1px solid #888;
+  width: 80%;
+  font-size: smaller;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+.modal-checked-coins {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-header {
+  padding: 10px 0 0 10px;
+  background-color: rgb(185, 55, 51);
+  color: white;
+}
+
+.modal-header > h2 {
+    font-size: 2.5rem;
+    font-family: 'Russo One', sans-serif;
+}
+
+.modal-body {
+    padding: 16px;
+    font-size: large;
+}
+
+.modal-body p span {
+    font-size: larger;
+    font-weight: 600;
+}
+
+.modal a {
+    margin: 2px;
+}
+
+/* ------------------ ABOUT ------------------ */
+.about {
+    display: none;
+    position: relative;
+    width: 60vw;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffffe0;
+    box-shadow: 0px 0px 20px #ccc;
+}
+
+.about > img {
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    opacity: 0.9;
+}
+
+.about p {
+    width: 60%;
+}
+
+
+/* ------------------ LIVE REPORTS ------------------ */
+.live-reports {
+    display: none;
+}
+
+#chartContainer {
+    display: none;
+    height: 370px;
+    width: 80vw;
+    margin: 3rem auto;
+    box-shadow: 0px 0px 20px #ccc;
+}
+
+.alert {
+    text-align: center;
+    font-size: x-large;
+    position: fixed;
+    top: 50vh;
+    width: 100vw;
+    box-shadow: 0 0 50px white;
+    font-family: 'Russo One', sans-serif;
+    z-index: 1;
+}
+
+/* ------------------ RESPONSIVENESS ------------------ */
+
+/* Tablets Ipads portrait mode  */
+@media screen and (max-width: 1080px) {
+    header > h1 {font-size: 3rem;}
+    .navbar-brand {width: 30px;}
+    .about {width: 77vw;}
+    main {width: 90vw;}
+    .modal-checked-coins {flex-wrap: wrap;}
+    .modal h2 {font-size: xx-large;}
+
+    .loading-gif {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 888px) {
+    .about {width: 90vw;}
+    .modal {padding: 1rem;}
+    .modal h2 {font-size: x-large;}
+
+    .loading-gif {
+        bottom: 1.5rem;
+        right: 1.2rem;
+        height: 30px;
+        width: 30px;
+    }
+}
+
+/* Ipads and Mobile  */
+@media screen and (max-width: 767px) {
+    header > h1 {font-size: 3rem;}
+    main {width: 100vw;}
+    .about {width: 95vw;}
+    .about p {width: 50%;}
+    .modal h2 {font-size: large;}
+
+    #show-info-btn {
+        padding: 3px 7px;
+    }    
+    
+    .switch {
+        display: block;
+        top: 0;
+        margin: 0rem 1rem 1rem .5rem;
+        position: relative;
+        height: 20px;
+        width: 40px;
+    }
+
+    .slider:before {
+        left: 1px;
+        bottom: 0.5px;
+        height: 14px;
+        width: 14px;
+    }
+    
+    .loading-gif {
+        top: 1rem;
+        right: 1rem;
+        height: 40px;
+        width: 40px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    * {font-size: small;}
+    header > h1 {font-size: 2rem;}
+    .modal {min-width: 100vw;}
+    .modal h2 {font-size: medium;}
+    .alert {font-size: large;}
+    .about {width: 80%;}
+    .about > p {width: 95%;}
+
+    .about > img {
+        position: relative;
+        width: 100%;
+        margin: -2rem 2rem;
+    }
+
+    .loading-gif {
+        height: 30px;
+        width: 30px;
+    }
+}
