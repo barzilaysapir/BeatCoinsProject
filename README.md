@@ -1,2 +1,2 @@
 # LET'S BEAT SOME COINS.
-Bootstrap, JS, jQuery - BeatCoins
+JavaScript, jQuery, AJAX, CSS3, Bootstrap.
